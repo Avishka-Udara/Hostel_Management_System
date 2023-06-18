@@ -37,5 +37,6 @@ class AuthServiceProvider extends ServiceProvider
 
             return $user->is_permission == '2';
         });
+        
     }
 }

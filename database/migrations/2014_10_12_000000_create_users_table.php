@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->bigInteger('room_id');
             $table->tinyInteger('is_permission')->default('0');
             #0- student 1-subwordent
             $table->rememberToken();
