@@ -17,6 +17,7 @@ class User extends Authenticatable
         'email',
         'password',
         'room_id',
+        'hostel_registration_year',
     ];
 
     protected $hidden = [
@@ -29,5 +30,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
- 
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
 }

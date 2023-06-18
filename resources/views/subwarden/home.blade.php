@@ -28,14 +28,21 @@
                                 <label for="room_id">Select Room:</label>
                                 <select name="room_id" id="room_id">
                                     @foreach ($rooms as $room)
-                                        <option value="{{ $room->id }}">{{ $room->Room_No }}</option>
+                                        @php
+                                            $availableBeds = $room->no_of_bed - $room->users->count();
+                                        @endphp
+                                        @if ($availableBeds > 0)
+                                            <option value="{{ $room->id }}">{{ $room->Room_No }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
 
                                 <label for="user_id">Select User:</label>
                                 <select name="user_id" id="user_id">
                                     @foreach ($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @if ($user->room_id === null)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
 
