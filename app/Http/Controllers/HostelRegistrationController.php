@@ -34,6 +34,14 @@ class HostelRegistrationController extends Controller
         //return to home with successfull notification
         return redirect()->route('home')->with('status', 'Hostel registration completed successfully! You will receive your room shortly.!');
         
-
+    }
+    //delete
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->hostel_registration_year = null;
+        $user->payment_receipt_path = null;
+        $user->save();
+        return redirect()->route('home')->with('status', 'Hostel registration deleted successfully!');
     }
 }

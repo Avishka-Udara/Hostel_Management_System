@@ -39,8 +39,9 @@ class RoomController extends Controller
         }
     
         
-        public function edit(Room $room)
+        public function edit($id)
         {
+            $room = Room::findOrFail($id);
             return view('rooms.edit',compact('room'));
         }
     

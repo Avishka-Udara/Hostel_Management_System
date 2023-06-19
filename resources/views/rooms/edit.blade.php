@@ -25,7 +25,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Room No:</strong>
-                        <input type="text" name="Room_No" value="{{ old('Room_No') }}" class="form-control">
+                        <input type="text" name="Room_No" value="{{ $room->Room_No }}" class="form-control">
                         @error('Room_No')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
@@ -34,7 +34,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>No of Bed:</strong>
-                        <input type="text" name="no_of_bed" class="form-control" value="{{ old('no_of_bed') }}">
+                        <input type="text" name="no_of_bed" class="form-control" value="{{ $room->no_of_bed }}">
                         @error('no_of_bed')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror

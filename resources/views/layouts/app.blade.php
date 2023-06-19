@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('HMS', 'HMS') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -23,17 +23,28 @@
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('Home', 'Home') }}
                 </a>
-                <a class="navbar-brand" href="{{ url('rooms') }}">
-                    {{ config('Rooms', 'Rooms') }}
-                </a>
+                
                 <!--<a class="navbar-brand" href="{{ url('/registeredstudents') }}">
                     {{ config('registering-students', 'Request-Form') }}
                 </a>
             -->
                 @can('isManager')
+                    <a class="navbar-brand" href="{{ url('rooms') }}">
+                        {{ config('Rooms', 'Rooms') }}
+                    </a>
                     <a class="navbar-brand" href="{{ url('/registeredstudents') }}">
                         {{ config('registering-students', 'Request-Form') }}
                     </a>
+                @endcan
+                
+                @can('isAdmin')
+                    <a class="navbar-brand" href="{{ url('rooms') }}">
+                        {{ config('Rooms', 'Rooms') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/users') }}">
+                        {{ config('users', 'Users') }}
+                    </a>
+
                 @endcan
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

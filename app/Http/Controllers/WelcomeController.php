@@ -66,7 +66,7 @@ class WelcomeController extends Controller
     public function user()
     {
         $userCount = User::whereNotNull('room_id')->count();
-        $regque = User::whereNull('room_id')->where('is_permission', '0')->count();
+        $regque = User::whereNull('room_id')->whereNotNull('hostel_registration_year')->where('is_permission', '0')->count();
         $users = User::where('is_permission', 0)->count();
         $Room_count = Room::count();
         $filledRoomsCount = Room::whereRaw('no_of_bed = (SELECT COUNT(*) FROM users WHERE room_id = rooms.id)')->count();
