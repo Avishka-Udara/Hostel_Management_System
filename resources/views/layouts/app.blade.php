@@ -7,11 +7,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('HMS', 'HMS') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -20,9 +23,33 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    {{ config('Home', 'Home') }}
                 </a>
+                
+                <!--<a class="navbar-brand" href="{{ url('/registeredstudents') }}">
+                    {{ config('registering-students', 'Request-Form') }}
+                </a>
+            -->
+                @can('isManager')
+                    <a class="navbar-brand" href="{{ url('rooms') }}">
+                        {{ config('Rooms', 'Rooms') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/registeredstudents') }}">
+                        {{ config('registering-students', 'Request-Form') }}
+                    </a>
+                @endcan
+                
+                @can('isAdmin')
+                    <a class="navbar-brand" href="{{ url('rooms') }}">
+                        {{ config('Rooms', 'Rooms') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/users') }}">
+                        {{ config('users', 'Users') }}
+                    </a>
+
+                @endcan
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -76,5 +103,27 @@
             @yield('content')
         </main>
     </div>
+<script>
+    // Toggle password visibility
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function () {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.querySelector('i').classList.toggle('fa-eye');
+        this.querySelector('i').classList.toggle('fa-eye-slash');
+    });
+
+    const togglePasswordConfirmation = document.getElementById('togglePasswordConfirmation');
+    const passwordConfirm = document.getElementById('password-confirm');
+
+    togglePasswordConfirmation.addEventListener('click', function () {
+        const type = passwordConfirm.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordConfirm.setAttribute('type', type);
+        this.querySelector('i').classList.toggle('fa-eye');
+        this.querySelector('i').classList.toggle('fa-eye-slash');
+    });
+</script>
 </body>
 </html>

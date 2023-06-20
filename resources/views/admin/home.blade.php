@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -16,15 +16,34 @@
 
                         {{ __('You are logged in!') }}
                     </div>
-                    <div class="card-body">
-                       
-                        <div class="btn btn-success btn-lg">
 
-                            Welcome Super Admin !!!
-
+                    <div class="row">
+                        <div class="col-sm-4 p-5">
+                          <div class="card text-center">
+                            <div class="card-body">
+                                <p class="btn btn-primary">{{ $userCount }}</p>
+                                <h5 class="card-title">STUDENTS THAT ENROLED</h5>
+                            </div>
+                          </div>
                         </div>
-
+                        <div class="col-sm-4 p-5">
+                          <div class="card text-center">
+                            <div class="card-body">
+                                <p class="btn btn-primary">{{ $filledRoomsCount }}</p>
+                                <h5 class="card-title">ROOMS THAT FILLED</h5>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 p-5">
+                            <div class="card text-center">
+                              <div class="card-body">
+                                <p class="btn btn-primary">{{ $regque }}</p>
+                                <h5 class="card-title">REGISTRATION REQUEST</h5>
+                              </div>
+                            </div>
+                          </div>
                     </div>
+       
                 </div>
             </div>
         </div>
