@@ -14,7 +14,7 @@ class UserController extends Controller
         if (Gate::allows('isAdmin')) {
             // Retrieve all users from the database
             $users = User::all();
-            // Pass the users data to the index view
+            // Pass the users data to the index view 
             return view('users.index', compact('users'));
 
         } else {

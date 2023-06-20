@@ -28,6 +28,7 @@
                                     <thead>
                                         <tr>
                                             <th>Name</th>
+                                            <th>Room No</th>
                                             <th>Email</th>
                                             <th>Role</th>
                                             <th>Actions</th>
@@ -37,6 +38,13 @@
                                         @foreach ($users as $user)
                                             <tr>
                                                 <td>{{ $user->name }}</td>
+                                                <td>
+                                                    @if($user->is_permission == 0)
+                                                        {{ $user->room->Room_No ?? '' }}
+                                                    @else
+                                                        -
+                                                    @endif
+                                                </td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>
                                                     @if($user->is_permission == 0)
@@ -47,6 +55,7 @@
                                                         Admin
                                                     @endif
                                                 </td>
+
                                                 <td>
                                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Edit</a>
                                                 </td>
