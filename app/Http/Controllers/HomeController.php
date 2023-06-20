@@ -54,7 +54,9 @@ class HomeController extends Controller
         }
         elseif (Gate::allows('isUser')){
     
-            return view('home', compact('user'));
+            //return to the home with successflly loging message
+            
+            return view('home', compact('user') );
     
         }
         

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ ('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -43,13 +43,20 @@
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <div class="col-md-6 input-group">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn" id="togglePassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 
@@ -57,7 +64,14 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <div class="col-md-6 input-group">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn" id="togglePasswordConfirmation">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -74,4 +88,5 @@
         </div>
     </div>
 </div>
+
 @endsection

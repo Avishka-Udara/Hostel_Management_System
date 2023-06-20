@@ -13,6 +13,9 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -100,5 +103,27 @@
             @yield('content')
         </main>
     </div>
+<script>
+    // Toggle password visibility
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function () {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.querySelector('i').classList.toggle('fa-eye');
+        this.querySelector('i').classList.toggle('fa-eye-slash');
+    });
+
+    const togglePasswordConfirmation = document.getElementById('togglePasswordConfirmation');
+    const passwordConfirm = document.getElementById('password-confirm');
+
+    togglePasswordConfirmation.addEventListener('click', function () {
+        const type = passwordConfirm.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordConfirm.setAttribute('type', type);
+        this.querySelector('i').classList.toggle('fa-eye');
+        this.querySelector('i').classList.toggle('fa-eye-slash');
+    });
+</script>
 </body>
 </html>
